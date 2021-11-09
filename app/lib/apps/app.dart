@@ -12,7 +12,7 @@ class MyMaterialApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
