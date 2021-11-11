@@ -36,9 +36,6 @@ class OneCallWeatherData {
   }
 
   factory OneCallWeatherData.fromJSONString(String jsonStr) {
-    print('Inside fromJSONString()');
-    print(jsonStr);
-
     return OneCallWeatherData.fromJSON(jsonDecode(jsonStr));
   }
 }
