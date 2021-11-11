@@ -5,9 +5,14 @@ class WeatherDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child:
-          Text('This page shows the weather for the selected day in detail.'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Weather Details'),
+      ),
+      body: Center(
+        child:
+            Text('This page shows the weather for the selected day in detail.'),
+      ),
     );
   }
 }

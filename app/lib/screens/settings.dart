@@ -5,8 +5,12 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('This page allows us to edit the settings'),
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Settings'),
+        ),
+        body: Center(
+          child: Text('This page allows us to edit the settings'),
+        ));
   }
 }
