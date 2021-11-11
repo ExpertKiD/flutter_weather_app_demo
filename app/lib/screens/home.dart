@@ -1,4 +1,3 @@
-import 'package:app/resources/colors.dart';
 import 'package:app/screens/settings.dart';
 import 'package:app/screens/weather_detail.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,6 @@ class HomeScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: AppColors.sunshineBlue,
             pinned: true,
             snap: false,
             floating: false,
