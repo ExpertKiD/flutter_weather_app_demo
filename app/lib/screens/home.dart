@@ -156,7 +156,13 @@ class HomeScreen extends ConsumerWidget {
           );
         },
         error: (error, stackTrace) {
-          return const Center(child: Text('Error'));
+          if (!kReleaseMode) {
+            print(error);
+            print(stackTrace);
+          }
+
+          return const Center(
+              child: Text('Error loading data. Please try again later'));
         },
         loading: () {
           return const Center(child: CircularProgressIndicator());
