@@ -46,10 +46,7 @@ class WeatherTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
-              child: Image.asset(
-                'assets/images/ic_clear.png',
-                cacheWidth: 32,
-              ),
+              child: getWeatherConditionIconImage(),
             ),
             Expanded(
               flex: 7,
@@ -100,5 +97,43 @@ class WeatherTile extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  Image getWeatherConditionIconImage() {
+    WeatherCondition weatherCondition = weather.getWeatherCondition();
+
+    String imagePath = '';
+
+    switch (weatherCondition) {
+      case WeatherCondition.clear:
+        imagePath = 'assets/images/ic_clear.png';
+        break;
+      case WeatherCondition.clouds:
+        imagePath = 'assets/images/ic_cloudy.png';
+        break;
+      case WeatherCondition.fog:
+        imagePath = 'assets/images/ic_fog.png';
+        break;
+      case WeatherCondition.lightRain:
+        imagePath = 'assets/images/ic_light_rain.png';
+        break;
+      case WeatherCondition.rain:
+        imagePath = 'assets/images/ic_rain.png';
+        break;
+      case WeatherCondition.snow:
+        imagePath = 'assets/images/ic_snow.png';
+        break;
+      case WeatherCondition.storm:
+        imagePath = 'assets/images/ic_storm.png';
+        break;
+
+      default:
+        break;
+    }
+
+    return Image.asset(
+      imagePath,
+      cacheWidth: 32,
+    );
   }
 }
