@@ -4,6 +4,7 @@ import 'package:app/models/weather_data.dart';
 import 'package:app/providers/weather_provider.dart';
 import 'package:app/resources/colors.dart';
 import 'package:app/screens/settings.dart';
+import 'package:app/view_models/weather.dart';
 import 'package:app/widgets/weather_tile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,10 @@ class HomeScreen extends ConsumerWidget {
           final weatherData = WeatherData(
             currentWeatherData: weatherDataList[0] as CurrentWeatherData,
             oneCallWeatherData: weatherDataList[1] as OneCallWeatherData,
+          );
+
+          WeatherModel currentWeatherModel = WeatherModel.fromWeather(
+            weatherData.currentWeatherData.currentWeather,
           );
 
           return CustomScrollView(
@@ -61,7 +66,8 @@ class HomeScreen extends ConsumerWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Today, April 20',
+                                      currentWeatherModel
+                                          .getTodayStringWithDateAndMonth(),
                                       style: GoogleFonts.robotoCondensed(
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
@@ -77,7 +83,7 @@ class HomeScreen extends ConsumerWidget {
                                         textBaseline: TextBaseline.alphabetic,
                                         children: [
                                           Text(
-                                            '16\u00b0',
+                                            '${currentWeatherModel.tempMax.round()}\u00b0',
                                             style: GoogleFonts.robotoCondensed(
                                               fontSize: 72,
                                               fontWeight: FontWeight.w100,
@@ -85,7 +91,7 @@ class HomeScreen extends ConsumerWidget {
                                             ),
                                           ),
                                           Text(
-                                            '4\u00b0',
+                                            '${currentWeatherModel.tempMin.round()}\u00b0',
                                             style: GoogleFonts.robotoCondensed(
                                               fontSize: 36,
                                               fontWeight: FontWeight.w100,
@@ -96,7 +102,7 @@ class HomeScreen extends ConsumerWidget {
                                       ),
                                     ),
                                     Text(
-                                      'London, UK',
+                                      weatherData.oneCallWeatherData.timezone,
                                       style: GoogleFonts.robotoCondensed(
                                         fontSize: 22,
                                         fontWeight: FontWeight.normal,
@@ -115,13 +121,14 @@ class HomeScreen extends ConsumerWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Image.asset(
-                                      'assets/images/art_clear.png',
+                                      currentWeatherModel
+                                          .getWeatherConditionImagePath(),
                                       cacheWidth: 122,
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(top: 16),
                                       child: Text(
-                                        'Clear',
+                                        currentWeatherModel.weatherCondition,
                                         style: GoogleFonts.robotoCondensed(
                                           fontSize: 22,
                                           fontWeight: FontWeight.normal,

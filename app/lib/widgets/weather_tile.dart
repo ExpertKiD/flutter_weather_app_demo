@@ -2,6 +2,7 @@ import 'package:app/models/weather.dart';
 import 'package:app/resources/colors.dart';
 import 'package:app/screens/weather_detail.dart';
 import 'package:app/utils/utils.dart';
+import 'package:app/view_models/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -100,39 +101,10 @@ class WeatherTile extends StatelessWidget {
   }
 
   Image getWeatherConditionIconImage() {
-    WeatherCondition weatherCondition = weather.getWeatherCondition();
-
-    String imagePath = '';
-
-    switch (weatherCondition) {
-      case WeatherCondition.clear:
-        imagePath = 'assets/images/ic_clear.png';
-        break;
-      case WeatherCondition.clouds:
-        imagePath = 'assets/images/ic_cloudy.png';
-        break;
-      case WeatherCondition.fog:
-        imagePath = 'assets/images/ic_fog.png';
-        break;
-      case WeatherCondition.lightRain:
-        imagePath = 'assets/images/ic_light_rain.png';
-        break;
-      case WeatherCondition.rain:
-        imagePath = 'assets/images/ic_rain.png';
-        break;
-      case WeatherCondition.snow:
-        imagePath = 'assets/images/ic_snow.png';
-        break;
-      case WeatherCondition.storm:
-        imagePath = 'assets/images/ic_storm.png';
-        break;
-
-      default:
-        break;
-    }
+    WeatherModel model = WeatherModel.fromWeather(weather);
 
     return Image.asset(
-      imagePath,
+      model.getWeatherConditionIconImagePath(),
       cacheWidth: 32,
     );
   }

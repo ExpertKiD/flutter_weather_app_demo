@@ -28,7 +28,7 @@ class OneCallWeatherData {
         weatherConditionId: weatherJson["weather"][0]["id"] as int,
         humidity: weatherJson["humidity"] as int,
         pressure: weatherJson["pressure"] as int,
-        windSpeed: weatherJson["wind_speed"] as double,
+        windSpeed: double.parse(weatherJson["wind_speed"].toString()),
         windDirection: weatherJson["wind_deg"] as int,
       );
     }).toList();
