@@ -15,6 +15,8 @@ class WeatherTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(weather.getWeatherCondition());
+
     return Material(
         child: InkWell(
       onTap: () {
@@ -56,14 +58,14 @@ class WeatherTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Tomorrow',
+                    weather.getDay(),
                     style: GoogleFonts.robotoCondensed(
                       fontSize: 22,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    'Clear',
+                    weather.weatherCondition,
                     style: GoogleFonts.robotoCondensed(
                       fontSize: 14,
                       fontWeight: FontWeight.normal,
