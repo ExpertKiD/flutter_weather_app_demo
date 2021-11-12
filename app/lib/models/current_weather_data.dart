@@ -31,8 +31,9 @@ class CurrentWeatherData {
         tempMax: json["main"]["temp_max"] as double,
         tempMin: json["main"]["temp_min"] as double,
         weatherCondition: json["weather"][0]["main"],
+        weatherConditionId: json["weather"][0]["id"] as int,
         windDirection: json["wind"]["deg"] as int,
-        windSpeed: json["wind"]["speed"] as double,
+        windSpeed: double.parse(json["wind"]["speed"].toString()),
       ),
     );
   }

@@ -25,6 +25,7 @@ class OneCallWeatherData {
         tempMin: weatherJson["temp"]["min"] as double,
         tempMax: weatherJson["temp"]["max"] as double,
         weatherCondition: weatherJson["weather"][0]["main"],
+        weatherConditionId: weatherJson["weather"][0]["id"] as int,
         humidity: weatherJson["humidity"] as int,
         pressure: weatherJson["pressure"] as int,
         windSpeed: weatherJson["wind_speed"] as double,
