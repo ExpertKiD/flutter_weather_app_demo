@@ -24,7 +24,7 @@ class WeatherTile extends StatelessWidget {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => WeatherDetailScreen(
-              weather: weather,
+              weatherModel: WeatherModel.fromWeather(weather),
             ),
           ),
         );
